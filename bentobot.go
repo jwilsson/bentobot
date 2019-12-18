@@ -1,28 +1,19 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"net/http"
 	"os"
 
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/nlopes/slack"
 )
 
-type Body struct {
-	Text string `json:"text"`
-}
-
 func handleRequest(ctx context.Context) (string, error) {
-	jsonBody, _ := json.Marshal(Body{
-		Text: ":bento:?",
-	})
-
-	_, err := http.Post(
+	err := slack.PostWebhook(
 		os.Getenv("SLACK_WEBHOOK_URL"),
-		"application/json",
-		bytes.NewBuffer(jsonBody),
+		&slack.WebhookMessage{
+			Text: ":bento:?",
+		},
 	)
 
 	return "", err

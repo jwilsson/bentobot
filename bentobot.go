@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/nlopes/slack"
+	"github.com/slack-go/slack"
 )
 
 func handleRequest(ctx context.Context) (string, error) {

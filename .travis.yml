@@ -11,6 +11,7 @@ before_install:
   - npm install -g serverless
 
 script:
+  - go test
   - go build
 
 after_success:

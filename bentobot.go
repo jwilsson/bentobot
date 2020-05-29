@@ -1,14 +1,13 @@
 package main
 
 import (
-	"context"
 	"os"
 
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/slack-go/slack"
 )
 
-func handleRequest(ctx context.Context) (string, error) {
+func handleRequest() (string, error) {
 	err := slack.PostWebhook(
 		os.Getenv("SLACK_WEBHOOK_URL"),
 		&slack.WebhookMessage{

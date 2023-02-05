@@ -12,5 +12,7 @@ functions:
     handler: bentobot
     environment:
       SLACK_WEBHOOK_URL: ${env:SLACK_WEBHOOK_URL}
+      RUN_AT_TIME: 11:15
+      TARGET_TIMEZONE: Europe/Stockholm
     events:
-      - schedule: cron(15 10 ? * MON-FRI *)
+      - schedule: cron(15 * ? * MON-FRI *)

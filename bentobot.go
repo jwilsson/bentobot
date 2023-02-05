@@ -10,7 +10,7 @@ import (
 )
 
 func handleRequest() (string, error) {
-	if utils.IsHoliday(time.Now()) {
+	if !utils.ShouldRun(time.Now(), os.Getenv("RUN_AT_TIME"), os.Getenv("TARGET_TIMEZONE")) {
 		return "", nil
 	}
 
